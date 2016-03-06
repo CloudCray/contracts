@@ -18,8 +18,8 @@ class Payer(Base):
 payer_group_payers = Table(
     'payer_group_payers',
     Base.metadata,
-    Column('payer_id', Integer, ForeignKey('Payer.id')),
-    Column('payer_group_id', Integer, ForeignKey('PayerGroupo.id'))
+    Column('payer_id', Integer, ForeignKey('payers.id')),
+    Column('payer_group_id', Integer, ForeignKey('payer_groups.id'))
 )
 
 
@@ -41,9 +41,9 @@ class Procedure(Base):
 
 
 class ProcedurePrice(Base):
-    __tablename__ = "procedures"
+    __tablename__ = "procedure_prices"
     id = Column(Integer, primary_key=True)
-    procedure_id = Column(Integer, ForeignKey("Procedure.id"))
-    payer_id = Column(Integer, ForeignKey("Payer.id"))
-    payer_group_id = Column(Integer, ForeignKey("PayerGroup.id"))
+    procedure_id = Column(Integer, ForeignKey("procedures.id"))
+    payer_id = Column(Integer, ForeignKey("payers.id"))
+    payer_group_id = Column(Integer, ForeignKey("payer_groups.id"))
     price = Column(Float)
